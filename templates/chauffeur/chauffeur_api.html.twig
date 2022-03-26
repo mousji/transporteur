@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Chauffeur
+{% endblock %}
+
+{% block body %}
+	<h1>
+		Liste des Chauffeur</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ chauf[0].id }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ chauf[0].Nom }}</td>
+			</tr>
+			<tr>
+				<th>Prenom</th>
+				<td>{{ chauf[0].prenom }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ chauf[0].email }}</td>
+			</tr>
+			<tr>
+				<th>Telephone</th>
+				<td>{{ chauf[0].tel }}</td>
+			</tr>
+			<tr>
+				<th>Date_permis</th>
+				<td>{{ chauf[0].date_permis ? chauf[0].date_permis|date('Y-m-d') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+{% endblock %}

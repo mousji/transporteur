@@ -29,3 +29,16 @@ app_chauffeur_delete:
    path: /{id}
    controller: App\Controller\ChauffeurController::delete
 
+
+app_chauffeur_api:
+   path: /{id}/api
+   controller: App\Controller\ChauffeurController::ChauffeurApi
+
+
+
+app_chauffeur_new_api:
+   path: /Chauffeurnew
+   controller: App\Controller\ChauffeurController::Chauffeurnew
+
+
+

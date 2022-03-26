@@ -49,6 +49,11 @@ class Chauffeur
      */
     private $transports;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=EntrepriseUtilisatrice::class, inversedBy="chauffeur")
+     */
+    private $entrepriseUtilisatrice;
+
     public function __construct()
     {
         $this->transports = new ArrayCollection();
@@ -145,6 +150,18 @@ class Chauffeur
                 $transport->setChauffeur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEntrepriseUtilisatrice(): ?EntrepriseUtilisatrice
+    {
+        return $this->entrepriseUtilisatrice;
+    }
+
+    public function setEntrepriseUtilisatrice(?EntrepriseUtilisatrice $entrepriseUtilisatrice): self
+    {
+        $this->entrepriseUtilisatrice = $entrepriseUtilisatrice;
 
         return $this;
     }

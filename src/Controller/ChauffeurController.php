@@ -73,4 +73,63 @@ class ChauffeurController extends AbstractController
 
         return $this->redirectToRoute('app_chauffeur_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    #[Route('/{id}/api', name: 'app_chauffeur_api', methods: ['GET', 'POST'])]
+    public function ChauffeurApi(Request $request): Response
+    {
+
+
+        $data = $this->getDoctrine()
+            ->getRepository(Chauffeur::class)
+            ->findAll();
+
+        $chauf = [];
+
+        foreach ($data as $da) {
+            $chauf[] = [
+                'id' => $da->getId(),
+                'Nom' => $da->getNom(),
+                'prenom' => $da->getPrenom(),
+                'email' => $da->getEmail(),
+                'tel' => $da->getTelephone(),
+                'date_permis' => $da->getDatePermis(),
+            ];
+        }
+
+
+
+        return $this->render('chauffeur/chauffeur_api.html.twig', [
+            'chauf' => $chauf,
+        ]);
+    }
+
+    #[Route('/Chauffeurnew', name: 'app_chauffeur_new_api', methods: ['POST'])]
+    public function Chauffeurnew(Request $request): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $param = json_decode($request->getContent(), true);
+
+
+        $chauffeur = new Chauffeur();
+
+        $chauffeur->setNom($param['nom']);
+        $chauffeur->setPrenom($param['prenom']);
+        $chauffeur->setEmail($param['email']);
+        $chauffeur->setTelephone($param['telephone']);
+
+
+
+
+        // $chauffeur->setNom($request->request->get('nom'));
+        // $chauffeur->setPrenom($request->request->get('prenom'));
+        // $chauffeur->setEmail($request->request->get('email'));
+        // $chauffeur->setTelephone($request->request->get('telephone'));
+
+        $entityManager->persist($chauffeur);
+        $entityManager->flush();
+
+
+        return $this->json('Created new chauffeur successfully with id ' . $chauffeur->getId());
+    }
 }
