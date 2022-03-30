@@ -40,7 +40,7 @@ class Chauffeur
     private $telephone;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date" , nullable=true)
      */
     private $date_permis;
 

@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Chauffeur{% endblock %}
+{% block title %}New Chauffeur
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Chauffeur</h1>
+	<h1 style="text-align:center">
+		Creation de chauffeur</h1>
 
-    {{ include('chauffeur/_form.html.twig') }}
+	{{ include('chauffeur/_form.html.twig') }}
 
-    <a href="{{ path('app_chauffeur_index') }}">back to list</a>
+	<a href="{{ path('app_chauffeur_index') }}">back to list</a>
 {% endblock %}

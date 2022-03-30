@@ -1,6 +1,11 @@
-#index:
+# index:
 #    path: /
-#    controller: App\Controller\DefaultController::index
+#     controller: App\Controller\DefaultController::index
+
+app_register:
+   path: /register
+   controller: App\Controller\RegistrationController::register
+
 
 app_chauffeur_index:
    path: /chauffeur
@@ -37,8 +42,18 @@ app_chauffeur_api:
 
 
 app_chauffeur_new_api:
-   path: /Chauffeurnew
+   path: api/Chauffeurnew
    controller: App\Controller\ChauffeurController::Chauffeurnew
+
+
+app_delete_chauffeur_api:
+   path: api/delete_chauffeur_api/{id}
+   controller: App\Controller\ChauffeurController::delete_chauffeur_api
+
+
+app_chauffeur_update_api:
+   path: api/Chauffeurupdate/{id}
+   controller: App\Controller\ChauffeurController::Chauffeurupdate
 
 
 
